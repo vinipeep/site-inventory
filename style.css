@@ -153,3 +153,247 @@ span{
 
 .tag-m { background: #4d4300; color: #ffeb3b; }
 .tag-u { background: #002b42; color: #00d4ff; }
+
+/* Ajuste no container para caber a tabela maior */
+.container-interativo {
+    width: 100%;
+    max-width: 1000px; 
+    margin: 20px 0;
+    font-family: sans-serif;
+}
+
+.formulario-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+    align-items: flex-end;
+}
+
+.campo-busca {
+    flex: 1;
+    min-width: 130px;
+}
+
+.campo-busca label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+/* Estilo para inputs de texto, número e o select de Status */
+.campo-busca input, .campo-busca select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 35px;
+    background-color: white;
+}
+
+.formulario-inputs button {
+    padding: 0 20px;
+    background-color: #0f9d58;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    height: 35px;
+}
+
+.formulario-inputs button:hover {
+    background-color: #0b8043;
+}
+
+/* DESIGN DA TABELA */
+.quadrado-resposta {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#tabelaDados {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+#tabelaDados th {
+    background-color: #f8f9fa;
+    color: #5f6368;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 2px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+#tabelaDados td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    color: #3c4043;
+}
+
+#tabelaDados th:last-child, #tabelaDados td:last-child {
+    border-right: none;
+}
+
+#tabelaDados tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#tabelaDados tbody tr:hover {
+    background-color: #f1f3f4;
+}
+
+/* CORES DOS STATUS (VERDE E VERMELHO) */
+.status-entrada {
+    background-color: #248140 !important; /* Verde água / Esmeralda */
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.status-saida {
+    background-color: #e71d36 !important; /* Vermelho vivo */
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+}
+#btnCopiarImagem {
+    background-color: #4285f4; /* Azul estilo Google */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+#btnCopiarImagem:hover {
+    background-color: #1a73e8;
+}
+
+#tabelaDados th {
+    background-color: #004B87; /* Azul corporativo/Multilaser */
+    color: #ffffff;            /* Letras brancas para dar contraste */
+    font-weight: 600;
+    padding: 12px 12px;
+    border-bottom: 2px solid #003366;
+    border-right: 1px solid #003366;
+    text-transform: uppercase; /* Deixa os títulos em MAIÚSCULO estilo sistema */
+    font-size: 13px;
+}
+#inputMaterial, #inputDescricao, #inputLinha {
+    text-transform: uppercase;
+}
+#tabelaDados th {
+    background-color: #004B87;
+    color: #ffffff;
+    font-weight: 700;           /* Deixa o título ainda mais forte */
+    padding: 12px 12px;
+    border-bottom: 2px solid #003366;
+    border-right: 1px solid #003366;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;         /* Centraliza os títulos */
+}
+
+
+#tabelaDados td {
+    padding: 12px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    color: #000000;            
+    font-weight: 500;          
+    text-align: center;
+}
+.texto-informativo {
+    font-size: 14px;
+    color: #4a5568;      
+    line-height: 1.6;     
+    margin-bottom: 25px;  
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #004B87; 
+}
+.menu-abas {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.aba-btn {
+    background-color: #f1f3f4;
+    color: #5f6368;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.aba-btn:hover {
+    background-color: #e8eaed;
+    color: #202124;
+}
+
+.aba-btn.ativa {
+    background-color: #004B87;
+    color: white;
+    border-color: #004B87;
+}
+
+.conteudo-aba {
+    display: none;
+}
+
+.conteudo-aba.ativa {
+    display: block;
+}
+titulo-demo {
+    text-align: center;
+    color: red; /* Mantém o vermelho do seu estilo original */
+    margin-bottom: 15px;
+}
+
+/* Centraliza o texto informativo */
+.texto-informativo {
+    text-align: center;
+    max-width: 800px;  /* Limita a largura para o texto não ficar esticado demais */
+    margin: 0 auto 25px auto; /* Centraliza o bloco do parágrafo na tela */
+}
+
+/* Centraliza os botões de Copiar e Limpar */
+.botoes-acoes {
+    display: flex;
+    justify-content: center; /* Alinha os botões no centro da tela */
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Garante o visual correto do botão de limpar */
+#btnLimparTabela {
+    background-color: #d93025; 
+    color: white; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: bold;
+}

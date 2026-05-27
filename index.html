@@ -3,30 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procurador de Impressoras</title>
+    <title>Buscador de Impressoras</title>
     <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="fotos/favicon.png">
+    <link rel="icon" type="image/png" href="fotos/favicon.png">
 </head>
 <body>
-    <div class="container">
-        <h1><span>Procurador</span>
-            <br>de Impressoras</h1>
-                <div class="info-box">
-    <h3>// SOBRE_O_SISTEMA</h3>
-    <p>Esta ferramenta foi desenvolvida por mim <strong>(Alex Vinicius)</strong> com o objetivo de otimizar nossas tarefas diárias, 
-        começando pelo buscador de impressoras das linhas. Minha intenção é expandir esse projeto para apoiar ainda mais a equipe. 
-        Por isso, estou totalmente aberto a sugestões: se tiverem ideias de novas funcionalidades, fiquem à vontade para compartilhar</p>
+
+<div class="menu-abas">
+    <button class="aba-btn ativa" onclick="mudarAba(event, 'abaImpressoras')">🔍 Buscar Impressoras</button>
+    <button class="aba-btn" onclick="mudarAba(event, 'abaTabela')">📊 Tabela Dinâmica (Demo)</button>
 </div>
+
+<div id="abaImpressoras" class="conteudo-aba ativa">
+    <div class="container">
+        <h1><span>buscador</span><br>de Impressoras 1.1</h1>
+        <div class="info-box">
+            <h3>// SOBRE_O_SISTEMA</h3>
+            <p>Esta ferramenta foi desenvolvida por mim <strong>(Alex Vinicius)</strong> com o objetivo de otimizar nossas tarefas diárias, 
+            começando pelo buscador de impressoras das linhas. Minha intenção é expandir esse projeto para apoiar ainda mais a equipe. 
+            Por isso, estou totalmente aberto a sugestões: se tiverem ideias de novas funcionalidades, fiquem à vontade para compartilhar</p>
+        </div>
         <input type="text" id="search-input" placeholder="Digite a linha; ex: PC01, MB06..." autocomplete="off">
         <div id="results-count"></div>
         <ul id="results-list"></ul>
     </div>
-    <a href="https://wa.me/553597575806?text=Olá!+tive+uma+ideia+pro+seu+site." class="whatsapp-fixed" target="_blank" rel="noopener noreferrer">
+</div> 
+
+
+<div id="abaTabela" class="conteudo-aba">
+    <div class="container-tabela-larga">
+        
+        <h1 class="titulo-demo">Teste demo 1.0</h1>
+        
+        <p class="texto-informativo">Esta tabela é uma demo por enquanto, pois quero testar para ver se vai dar certo. 
+        Não coloquei para puxar o valor unitário automaticamente porque ele sempre muda; 
+        colocando apenas o valor unitário manualmente e deixando o sistema fazer a conta pelo estoque, 
+        vai facilitar para nunca errarmos.</p>
+        
+        <div class="container-interativo">
+            <div class="formulario-inputs">
+                <div class="campo-busca">
+                    <label for="inputMaterial">Material?</label>
+                    <input type="text" id="inputMaterial" placeholder="Ex: cxpc124">
+                </div>
+
+                <div class="campo-busca">
+                    <label for="inputDescricao">Descrição?</label>
+                    <input type="text" id="inputDescricao" placeholder="Ex: Cabo de rede">
+                </div>
+
+                <div class="campo-busca">
+                    <label for="inputQuantidade">Quantidade?</label>
+                    <input type="number" id="inputQuantidade" placeholder="Ex: 15" min="0">
+                </div>
+
+                <div class="campo-busca">
+                    <label for="inputValorUnitario">Valor Unitário (R$)?</label>
+                    <input type="number" id="inputValorUnitario" placeholder="Ex: 4.50" step="0.01" min="0">
+                </div>
+
+                <div class="campo-busca">
+                    <label for="inputLinha">Linha?</label>
+                    <input type="text" id="inputLinha" placeholder="Ex: Produção A">
+                </div>
+
+                <div class="campo-busca">
+                    <label for="selectStatus">Status?</label>
+                    <select id="selectStatus">
+                        <option value="Entrada">Entrada</option>
+                        <option value="Saída">Saída</option>
+                    </select>
+                </div>
+
+                <button id="btnEnviar">Inserir na Planilha</button>
+            </div>
+
+            <div class="quadrado-resposta">
+                <table id="tabelaDados">
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor Unit.</th>
+                            <th>Valor Total</th>
+                            <th>Linha</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabela">
+                        <tr id="linhaVazia">
+                            <td colspan="7" style="text-align: center; color: #999;">Nenhum dado inserido ainda.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="botoes-acoes">
+            <button id="btnCopiarImagem">📷 Copiar Tabela para o Zap/E-mail</button>
+            <button id="btnLimparTabela">🗑️ Limpar Tabela</button>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="script.js"></script>
+
+<a href="https://wa.me/553597575806?text=Olá!+tive+uma+ideia+pro+seu+site." class="whatsapp-fixed" target="_blank" rel="noopener noreferrer">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Contato WhatsApp">
 </a>
-    <script src="script.js"></script>
-    <footer class="site-footer">
+
+<footer class="site-footer">
     <p>&copy; 2026 - Sistema desenvolvido por Alex Vinicius.</p>
 </footer>
+
 </body>
 </html>
