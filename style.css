@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS (ESTILO ORIGINAL DO SITE)
+   ========================================================================== */
 :root {
     --bg: #050505;
     --neon-green: #900404;
@@ -18,9 +21,61 @@ body {
     padding: 20px;
 }
 
+span {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   2. SISTEMA DE ABAS (ALTERNAÇÃO DE TELAS)
+   ========================================================================== */
+.menu-abas {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.aba-btn {
+    background-color: #f1f3f4;
+    color: #5f6368;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.aba-btn:hover {
+    background-color: #e8eaed;
+    color: #202124;
+}
+
+.aba-btn.ativa {
+    background-color: #004B87;
+    color: white;
+    border-color: #004B87;
+}
+
+.conteudo-aba {
+    display: none;
+    width: 100%;
+}
+
+.conteudo-aba.ativa {
+    display: block;
+}
+
+/* ==========================================================================
+   3. ABA 1: COMPONENTES DO BUSCADOR DE IMPRESSORAS (ORIGINAL)
+   ========================================================================== */
 .container {
-    width: 400%;
+    width: 100%;
     max-width: 500px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -88,17 +143,10 @@ h1 {
     border-radius: 2px;
     width: fit-content;
 }
-span{
-    color: #ffffff;
-}
-.site-footer {
-    margin-top: auto;       /* Empurra o rodapé para o final do espaço disponível */
-    padding: 20px 0;
-    width: 100%;
-    max-width: 500px;       /* Mantém a largura igual à do seu buscador */
-    border-top: 1px solid #222;
-    text-align: center;
-}
+
+.tag-m { background: #4d4300; color: #ffeb3b; }
+.tag-u { background: #002b42; color: #00d4ff; }
+
 .info-box {
     background: #111;
     border: 1px double var(--neon-blue);
@@ -125,119 +173,137 @@ span{
 .info-box strong {
     color: var(--neon-green);
 }
-.whatsapp-fixed {
-    position: fixed;
-    bottom: 25px; /* Distância do fundo */
-    right: 25px;  /* Distância da direita */
-    width: 60px;
-    height: 60px;
-    background-color: #25d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); /* Efeito Glow */
-    z-index: 9999; /* Garante que fique na frente de tudo */
-    transition: all 0.3s ease;
-}
 
-.whatsapp-fixed img {
-    width: 35px;
-    height: 35px;
-}
-
-.whatsapp-fixed:hover {
-    transform: scale(1.1); /* Aumenta levemente ao passar o mouse */
-    box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
-}
-
-.tag-m { background: #4d4300; color: #ffeb3b; }
-.tag-u { background: #002b42; color: #00d4ff; }
-
-/* Ajuste no container para caber a tabela maior */
-.container-interativo {
+/* ==========================================================================
+   4. ABA 2: COMPONENTES DA TABELA DINÂMICA (ESTILO LARGO)
+   ========================================================================== */
+.container-tabela-larga {
     width: 100%;
-    max-width: 1000px; 
-    margin: 20px 0;
-    font-family: sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+.titulo-demo {
+    text-align: center;
+    color: red;
+    margin-bottom: 15px;
+}
+
+.texto-informativo {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 25px auto;
+    font-size: 14px;
+    color: #ccc; 
+    line-height: 1.6;     
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #004B87;
+    background-color: #111;
+}
+
+/* Container que segura as caixas de perguntas lado a lado */
 .formulario-inputs {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite o encaixe das caixas de texto */
     gap: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     align-items: flex-end;
+    width: 100%;
 }
 
 .campo-busca {
     flex: 1;
-    min-width: 130px;
+    min-width: 140px; /* Impede que os campos fiquem muito achatados */
 }
 
 .campo-busca label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-size: 13px;
+    color: #ffffff;
 }
 
-/* Estilo para inputs de texto, número e o select de Status */
 .campo-busca input, .campo-busca select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 35px;
+    border-radius: 6px;
+    height: 42px;
     background-color: white;
+    font-size: 14px;
+    color: #000;
 }
 
-.formulario-inputs button {
-    padding: 0 20px;
+#inputMaterial, #inputDescricao, #inputLinha {
+    text-transform: uppercase;
+}
+
+/* Força o botão verde a ir para a linha de baixo e ficar no centro */
+.linha-botao-inserir {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#btnEnviar {
+    padding: 12px 35px;
     background-color: #0f9d58;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    height: 35px;
+    font-size: 15px;
+    transition: background 0.2s;
 }
 
-.formulario-inputs button:hover {
+#btnEnviar:hover {
     background-color: #0b8043;
 }
 
-/* DESIGN DA TABELA */
+/* DESIGN E CONFIGURAÇÕES DA PLANILHA */
 .quadrado-resposta {
+    width: 100%;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    border-radius: 6px;
     overflow-x: auto;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
 }
 
 #tabelaDados {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
     font-size: 14px;
 }
 
 #tabelaDados th {
-    background-color: #f8f9fa;
-    color: #5f6368;
-    font-weight: 600;
-    padding: 10px 12px;
-    border-bottom: 2px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
+    background-color: #004B87;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 12px 12px;
+    border-bottom: 2px solid #003366;
+    border-right: 1px solid #003366;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;
 }
 
 #tabelaDados td {
-    padding: 10px 12px;
+    padding: 12px 12px;
     border-bottom: 1px solid #e0e0e0;
     border-right: 1px solid #e0e0e0;
-    color: #3c4043;
+    color: #000000; 
+    font-weight: 500;
+    text-align: center;
 }
 
 #tabelaDados th:last-child, #tabelaDados td:last-child {
@@ -252,29 +318,36 @@ span{
     background-color: #f1f3f4;
 }
 
-/* CORES DOS STATUS (VERDE E VERMELHO) */
+/* CORES DOS STATUS */
 .status-entrada {
-    background-color: #248140 !important; /* Verde água / Esmeralda */
+    background-color: #248140 !important;
     color: white !important;
     font-weight: bold;
-    text-align: center;
 }
 
 .status-saida {
-    background-color: #e71d36 !important; /* Vermelho vivo */
+    background-color: #e71d36 !important;
     color: white !important;
     font-weight: bold;
-    text-align: center;
 }
+
+/* CENTRALIZAÇÃO DOS BOTÕES INFERIORES */
+.botoes-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+}
+
 #btnCopiarImagem {
-    background-color: #4285f4; /* Azul estilo Google */
+    background-color: #4285f4;
     color: white;
-    padding: 10px 20px;
+    padding: 11px 22px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 15px;
     font-size: 14px;
     transition: background 0.2s;
 }
@@ -283,117 +356,60 @@ span{
     background-color: #1a73e8;
 }
 
-#tabelaDados th {
-    background-color: #004B87; /* Azul corporativo/Multilaser */
-    color: #ffffff;            /* Letras brancas para dar contraste */
-    font-weight: 600;
-    padding: 12px 12px;
-    border-bottom: 2px solid #003366;
-    border-right: 1px solid #003366;
-    text-transform: uppercase; /* Deixa os títulos em MAIÚSCULO estilo sistema */
-    font-size: 13px;
-}
-#inputMaterial, #inputDescricao, #inputLinha {
-    text-transform: uppercase;
-}
-#tabelaDados th {
-    background-color: #004B87;
-    color: #ffffff;
-    font-weight: 700;           /* Deixa o título ainda mais forte */
-    padding: 12px 12px;
-    border-bottom: 2px solid #003366;
-    border-right: 1px solid #003366;
-    text-transform: uppercase;
-    font-size: 13px;
-    text-align: center;         /* Centraliza os títulos */
-}
-
-
-#tabelaDados td {
-    padding: 12px 12px;
-    border-bottom: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
-    color: #000000;            
-    font-weight: 500;          
-    text-align: center;
-}
-.texto-informativo {
-    font-size: 14px;
-    color: #4a5568;      
-    line-height: 1.6;     
-    margin-bottom: 25px;  
-    padding: 15px;
-    border-radius: 4px;
-    border-left: 4px solid #004B87; 
-}
-.menu-abas {
-    display: flex;
-    border-bottom: 2px solid #e0e0e0;
-    margin-bottom: 20px;
-    gap: 5px;
-}
-
-.aba-btn {
-    background-color: #f1f3f4;
-    color: #5f6368;
-    border: 1px solid #e0e0e0;
-    border-bottom: none;
-    padding: 12px 24px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-.aba-btn:hover {
-    background-color: #e8eaed;
-    color: #202124;
-}
-
-.aba-btn.ativa {
-    background-color: #004B87;
-    color: white;
-    border-color: #004B87;
-}
-
-.conteudo-aba {
-    display: none;
-}
-
-.conteudo-aba.ativa {
-    display: block;
-}
-titulo-demo {
-    text-align: center;
-    color: red; /* Mantém o vermelho do seu estilo original */
-    margin-bottom: 15px;
-}
-
-/* Centraliza o texto informativo */
-.texto-informativo {
-    text-align: center;
-    max-width: 800px;  /* Limita a largura para o texto não ficar esticado demais */
-    margin: 0 auto 25px auto; /* Centraliza o bloco do parágrafo na tela */
-}
-
-/* Centraliza os botões de Copiar e Limpar */
-.botoes-acoes {
-    display: flex;
-    justify-content: center; /* Alinha os botões no centro da tela */
-    gap: 15px;
-    margin-top: 25px;
-    width: 100%;
-}
-
-/* Garante o visual correto do botão de limpar */
 #btnLimparTabela {
     background-color: #d93025; 
     color: white; 
-    padding: 10px 15px; 
+    padding: 11px 22px; 
     border: none; 
     border-radius: 4px; 
     cursor: pointer; 
     font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+#btnLimparTabela:hover {
+    background-color: #b8251b;
+}
+
+/* ==========================================================================
+   5. ELEMENTOS FIXOS DA PÁGINA (RODAPÉ E BOTÃO FLUTUANTE)
+   ========================================================================== */
+.whatsapp-fixed {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-fixed img {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-fixed:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 20px 0;
+    width: 100%;
+    max-width: 500px;
+    border-top: 1px solid #222;
+    text-align: center;
+}
+.formulario-inputs .campo-status {
+    flex: 0 0 120px !important; /* Mude o 120px para o tamanho que você achar melhor */
+    min-width: 120px !important;
 }
