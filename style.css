@@ -1,12 +1,9 @@
-/* ==========================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS (ESTILO ORIGINAL DO SITE)
-   ========================================================================== */
 :root {
-    --bg: #050505;
-    --neon-green: #900404;
-    --neon-blue: #5b0303;
-    --card-bg: #111;
-    --text: #fff;
+    --bg: #030712;
+    --neon-green: #00f0ff;
+    --neon-blue: #0077ff;
+    --card-bg: #0b132b;
+    --text: #f0f6fc;
 }
 
 body {
@@ -25,20 +22,17 @@ span {
     color: #ffffff;
 }
 
-/* ==========================================================================
-   2. SISTEMA DE ABAS (ALTERNAÇÃO DE TELAS)
-   ========================================================================== */
 .menu-abas {
     display: flex;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid #1c2541;
     margin-bottom: 20px;
     gap: 5px;
 }
 
 .aba-btn {
-    background-color: #f1f3f4;
-    color: #5f6368;
-    border: 1px solid #e0e0e0;
+    background-color: #0b132b;
+    color: #8b949e;
+    border: 1px solid #1c2541;
     border-bottom: none;
     padding: 12px 24px;
     cursor: pointer;
@@ -50,14 +44,15 @@ span {
 }
 
 .aba-btn:hover {
-    background-color: #e8eaed;
-    color: #202124;
+    background-color: #1c2541;
+    color: #00f0ff;
 }
 
 .aba-btn.ativa {
-    background-color: #004B87;
-    color: white;
-    border-color: #004B87;
+    background-color: #0077ff;
+    color: #ffffff;
+    border-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
 }
 
 .conteudo-aba {
@@ -69,9 +64,6 @@ span {
     display: block;
 }
 
-/* ==========================================================================
-   3. ABA 1: COMPONENTES DO BUSCADOR DE IMPRESSORAS (ORIGINAL)
-   ========================================================================== */
 .container {
     width: 100%;
     max-width: 500px;
@@ -174,9 +166,6 @@ h1 {
     color: var(--neon-green);
 }
 
-/* ==========================================================================
-   4. ABA 2: COMPONENTES DA TABELA DINÂMICA (ESTILO LARGO)
-   ========================================================================== */
 .container-tabela-larga {
     width: 100%;
     max-width: 1200px;
@@ -187,7 +176,8 @@ h1 {
 
 .titulo-demo {
     text-align: center;
-    color: red;
+    color: #00f0ff;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     margin-bottom: 15px;
 }
 
@@ -200,15 +190,14 @@ h1 {
     line-height: 1.6;     
     padding: 15px;
     border-radius: 4px;
-    border-left: 4px solid #004B87;
-    background-color: #111;
+    border-left: 4px solid #00f0ff;
+    background-color: #0b132b;
 }
 
-/* Container que segura as caixas de perguntas lado a lado */
 .formulario-inputs {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Permite o encaixe das caixas de texto */
+    flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 20px;
     align-items: flex-end;
@@ -217,7 +206,7 @@ h1 {
 
 .campo-busca {
     flex: 1;
-    min-width: 140px; /* Impede que os campos fiquem muito achatados */
+    min-width: 140px;
 }
 
 .campo-busca label {
@@ -232,19 +221,18 @@ h1 {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #1c2541;
     border-radius: 6px;
     height: 42px;
-    background-color: white;
+    background-color: #0b132b;
     font-size: 14px;
-    color: #000;
+    color: #00f0ff;
 }
 
 #inputMaterial, #inputDescricao, #inputLinha {
     text-transform: uppercase;
 }
 
-/* Força o botão verde a ir para a linha de baixo e ficar no centro */
 .linha-botao-inserir {
     width: 100%;
     display: flex;
@@ -254,28 +242,29 @@ h1 {
 
 #btnEnviar {
     padding: 12px 35px;
-    background-color: #0f9d58;
-    color: white;
+    background-color: #00f0ff;
+    color: #030712;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
     font-size: 15px;
-    transition: background 0.2s;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+    transition: all 0.2s;
 }
 
 #btnEnviar:hover {
-    background-color: #0b8043;
+    background-color: #00c4d4;
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.7);
 }
 
-/* DESIGN E CONFIGURAÇÕES DA PLANILHA */
 .quadrado-resposta {
     width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: #0b132b;
+    border: 1px solid #1c2541;
     border-radius: 6px;
     overflow-x: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     margin-bottom: 20px;
 }
 
@@ -286,12 +275,12 @@ h1 {
 }
 
 #tabelaDados th {
-    background-color: #004B87;
-    color: #ffffff;
+    background-color: #0b132b;
+    color: #00f0ff;
     font-weight: 700;
     padding: 12px 12px;
-    border-bottom: 2px solid #003366;
-    border-right: 1px solid #003366;
+    border-bottom: 2px solid #00f0ff;
+    border-right: 1px solid #1c2541;
     text-transform: uppercase;
     font-size: 13px;
     text-align: center;
@@ -299,9 +288,9 @@ h1 {
 
 #tabelaDados td {
     padding: 12px 12px;
-    border-bottom: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
-    color: #000000; 
+    border-bottom: 1px solid #1c2541;
+    border-right: 1px solid #1c2541;
+    color: #f0f6fc; 
     font-weight: 500;
     text-align: center;
 }
@@ -311,27 +300,25 @@ h1 {
 }
 
 #tabelaDados tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: #070e20;
 }
 
 #tabelaDados tbody tr:hover {
-    background-color: #f1f3f4;
+    background-color: #121d3b;
 }
 
-/* CORES DOS STATUS */
 .status-entrada {
-    background-color: #248140 !important;
-    color: white !important;
+    background-color: #00f0ff !important;
+    color: #030712 !important;
     font-weight: bold;
 }
 
 .status-saida {
-    background-color: #e71d36 !important;
+    background-color: #ff0055 !important;
     color: white !important;
     font-weight: bold;
 }
 
-/* CENTRALIZAÇÃO DOS BOTÕES INFERIORES */
 .botoes-acoes {
     display: flex;
     justify-content: center;
@@ -341,7 +328,7 @@ h1 {
 }
 
 #btnCopiarImagem {
-    background-color: #4285f4;
+    background-color: #0077ff;
     color: white;
     padding: 11px 22px;
     border: none;
@@ -353,7 +340,7 @@ h1 {
 }
 
 #btnCopiarImagem:hover {
-    background-color: #1a73e8;
+    background-color: #005bb5;
 }
 
 #btnLimparTabela {
@@ -372,9 +359,6 @@ h1 {
     background-color: #b8251b;
 }
 
-/* ==========================================================================
-   5. ELEMENTOS FIXOS DA PÁGINA (RODAPÉ E BOTÃO FLUTUANTE)
-   ========================================================================== */
 .whatsapp-fixed {
     position: fixed;
     bottom: 25px;
@@ -409,7 +393,8 @@ h1 {
     border-top: 1px solid #222;
     text-align: center;
 }
+
 .formulario-inputs .campo-status {
-    flex: 0 0 120px !important; /* Mude o 120px para o tamanho que você achar melhor */
+    flex: 0 0 120px !important;
     min-width: 120px !important;
 }
