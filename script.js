@@ -78,7 +78,7 @@ input.addEventListener('input', () => {
 
 
 document.getElementById('btnEnviar').addEventListener('click', function() {
-    // 1. Captura os elementos do formulário
+
     const inputMaterial = document.getElementById('inputMaterial');
     const inputDescricao = document.getElementById('inputDescricao');
     const inputQuantidade = document.getElementById('inputQuantidade');
@@ -86,7 +86,6 @@ document.getElementById('btnEnviar').addEventListener('click', function() {
     const inputLinha = document.getElementById('inputLinha');
     const selectStatus = document.getElementById('selectStatus');
 
-    // 2. Pega os valores limpos
     const mat = inputMaterial.value.trim();
     const desc = inputDescricao.value.trim();
     const qtdTexto = inputQuantidade.value.trim();
@@ -94,22 +93,18 @@ document.getElementById('btnEnviar').addEventListener('click', function() {
     const lin = inputLinha.value.trim();
     const status = selectStatus.value;
 
-    // 3. Validação: Todos os campos são obrigatórios
     if (mat === "" || desc === "" || qtdTexto === "" || valUnitTexto === "" || lin === "") {
         alert("Por favor, preencha todos os campos antes de inserir!");
         return;
     }
 
-    // 4. Cálculos Matemáticos Automáticos
     const quantidade = parseFloat(qtdTexto);
     const valorUnitario = parseFloat(valUnitTexto);
     const valorTotal = quantidade * valorUnitario;
 
-    // Formata os números para o padrão de dinheiro do Brasil (R$ 0,00)
     const valorUnitFormatado = "R$ " + valorUnitario.toFixed(2).replace('.', ',');
     const valorTotalFormatado = "R$ " + valorTotal.toFixed(2).replace('.', ',');
 
-    // 5. Gerencia as linhas da tabela
     const corpoTabela = document.getElementById('corpoTabela');
     const linhaVazia = document.getElementById('linhaVazia');
 
@@ -117,10 +112,8 @@ document.getElementById('btnEnviar').addEventListener('click', function() {
         linhaVazia.remove();
     }
 
-    // 6. Cria a nova linha da planilha
     const novaLinha = document.createElement('tr');
 
-    // Define qual classe de cor o Status vai receber
     let classeStatus = "";
     if (status === "Entrada") {
         classeStatus = "status-entrada";
@@ -128,7 +121,6 @@ document.getElementById('btnEnviar').addEventListener('click', function() {
         classeStatus = "status-saida";
     }
 
-    // Injeta as colunas na tabela (com o Valor Total já calculado)
     novaLinha.innerHTML = `
         <td>${mat}</td>
         <td>${desc}</td>
@@ -139,7 +131,6 @@ document.getElementById('btnEnviar').addEventListener('click', function() {
         <td class="${classeStatus}">${status}</td>
     `;
 
-    // 7. Adiciona a linha na tabela e limpa o formulário
     corpoTabela.appendChild(novaLinha);
 
     inputMaterial.value = "";
@@ -147,18 +138,15 @@ document.getElementById('btnEnviar').addEventListener('click', function() {
     inputQuantidade.value = "";
     inputValorUnitario.value = "";
     inputLinha.value = "";
-    selectStatus.value = "Entrada"; // Reseta o menu para a primeira opção
-
-    // Coloca o cursor de volta no primeiro campo
+    selectStatus.value = "Entrada"; 
     inputMaterial.focus();
 });
 
 document.getElementById('btnLimparTabela').addEventListener('click', function() {
-    // Confirma se a pessoa realmente quer apagar tudo
+
     if (confirm("Tem certeza que deseja apagar todos os dados da tabela?")) {
         const corpoTabela = document.getElementById('corpoTabela');
-        
-        // Remove todas as linhas de dados
+
         corpoTabela.innerHTML = `
             <tr id="linhaVazia">
                 <td colspan="7" style="text-align: center; color: #999;">Nenhum dado inserido ainda.</td>
@@ -170,7 +158,6 @@ document.getElementById('btnCopiarImagem').addEventListener('click', function() 
     const elementoTabela = document.querySelector('.quadrado-resposta');
     const botao = document.getElementById('btnCopiarImagem');
 
-    // Se a tabela estiver vazia, avisa o usuário
     if (document.getElementById('linhaVazia')) {
         alert("Insira dados na tabela antes de copiar!");
         return;
@@ -179,27 +166,23 @@ document.getElementById('btnCopiarImagem').addEventListener('click', function() 
     botao.innerText = "📸 Copiando...";
     botao.disabled = true;
 
-    // 1. Tira o "print" visual da tabela
     html2canvas(elementoTabela, {
-        scale: 2, // Melhora a nitidez para não ficar embaçado no WhatsApp
-        backgroundColor: "#ffffff" // Garante o fundo branco da planilha
+        scale: 2, 
+        backgroundColor: "#ffffff" 
     }).then(canvas => {
         
-        // 2. Transforma o print em um formato de imagem que o sistema operacional entende (Blob)
         canvas.toBlob(function(blob) {
             try {
-                // 3. Cria o objeto de Área de Transferência contendo a imagem PNG
                 const item = new ClipboardItem({ "image/png": blob });
                 
-                // 4. Alimenta o Ctrl+C do computador com a imagem
+
                 navigator.clipboard.write([item]).then(function() {
                     // Sucesso!
                     botao.innerText = "✅ Copiado! Pode colar (Ctrl+V)";
-                    botao.style.backgroundColor = "#0f9d58"; // Muda para verde
+                    botao.style.backgroundColor = "#0f9d58"; 
                     
                     resetarBotao();
                 }).catch(err => {
-                    // Erro de permissão do navegador
                     console.error(err);
                     alert("O navegador bloqueou a cópia. Certifique-se de que está testando em um ambiente seguro (https:// ou localhost). Abrir o arquivo direto da pasta do PC bloqueia esse recurso.");
                     resetarBotao();
@@ -224,35 +207,28 @@ document.getElementById('btnCopiarImagem').addEventListener('click', function() 
 });
 
 document.getElementById('inputMaterial').addEventListener('paste', function(e) {
-    // 1. Pega o texto que está vindo da área de transferência
+
     const textoColado = (e.clipboardData || window.clipboardData).getData('text');
 
-    // O Excel separa colunas por "Tabulação" (\t). Vamos quebrar o texto por isso.
-    // Se vier do Excel, teremos um array com os dados de cada coluna.
     const colunas = textoColado.split('\t');
 
-    // Se o texto tiver pelo menos 2 colunas, significa que veio de uma tabela
     if (colunas.length > 1) {
-        // Evita que o texto bruto seja colado direto no primeiro input
+
         e.preventDefault();
 
-        // 2. Mapeia os inputs da tela
         const inputMaterial = document.getElementById('inputMaterial');
         const inputDescricao = document.getElementById('inputDescricao');
         const inputQuantidade = document.getElementById('inputQuantidade');
         const inputValorUnitario = document.getElementById('inputValorUnitario');
         const inputLinha = document.getElementById('inputLinha');
 
-        // 3. Distribui os dados colados nos campos (limpando espaços extras e jogando para Maiúsculo se for texto)
         if (colunas[0]) inputMaterial.value = colunas[0].trim().toUpperCase();
         if (colunas[1]) inputDescricao.value = colunas[1].trim().toUpperCase();
         if (colunas[2]) inputQuantidade.value = colunas[2].trim();
         
-        // Se a sua tabela de origem tiver também Valor Unitário e Linha nas colunas seguintes:
         if (colunas[3]) inputValorUnitario.value = colunas[3].trim().replace('R$', '').replace('.', '').replace(',', '.').trim(); 
         if (colunas[4]) inputLinha.value = colunas[4].trim().toUpperCase();
 
-        // Dá um aviso sutil no console ou foca no botão de enviar
         document.getElementById('btnEnviar').focus();
     }
 });
@@ -269,4 +245,30 @@ function mudarAba(evento, nomeAba) {
 
     document.getElementById(nomeAba).classList.add("ativa");
     evento.currentTarget.classList.add("ativa");
+}
+
+const API_URL = "https://script.google.com/macros/s/AKfycbxkdQctfwxd6BUSHJsWG16eQmZ08E6D7StocGk6cDCUY8QnUxU33JIlB82gjLGNDBOG/exec";
+
+function buscarDadosPlanilha() {
+  fetch(API_URL)
+    .then(response => response.json())
+    .then(dados => {
+      console.log("Dados da planilha:", dados);
+    })
+    .catch(error => console.error("Erro ao buscar dados:", error));
+}
+
+function enviarParaPlanilha(novoItem) {
+  fetch(API_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(novoItem)
+  })
+  .then(() => {
+    console.log("Dados enviados para a planilha com sucesso!");
+  })
+  .catch(error => console.error("Erro ao enviar:", error));
 }
